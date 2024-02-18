@@ -1,0 +1,63 @@
+def chatbot():
+    print("Hello! I'm your simple chatbot.")
+    print("You can type 'exit' to end the conversation.")
+    
+    while True:
+        user_input = input("You: ").lower()
+        
+        # Greeting responses
+        if user_input in ['hello', 'hi', 'hey', 'howdy']:
+            print("Chatbot: Hi there! How can I assist you today?")
+        
+        # Responding to a request for help
+        elif 'help' in user_input or user_input == 'can you help me':
+            print("Chatbot: Sure, I'm here to help! What do you need assistance with?")
+        
+        # Handling requests for information
+        elif 'information' in user_input:
+            information(user_input)
+        
+        # Exiting the conversation
+        elif user_input == 'exit':
+            print("Chatbot: Goodbye! Have a great day!")
+            break
+        elif 'thank you' in user_input:
+            print("Chatbot: You're welcome! Is there anything else I can assist you with?")
+            
+        # Default response
+        else:
+            print("Chatbot: I'm sorry, I don't understand that. Can you please rephrase?")
+
+def information(user_input):
+    information_topics = {
+        'technology': print_technology_info,
+        'health': print_health_info,
+        'sports': print_sports_info,
+        'movies': print_movie_info,
+        'food': print_food_info
+    }
+    
+    for topic in information_topics:
+        if topic in user_input:
+            information_topics[topic]()
+            return
+    
+    print("Chatbot: What specific information are you looking for?")
+
+def print_technology_info():
+    print("Chatbot: Technology is rapidly evolving! What specific information are you looking for about technology?")
+
+def print_health_info():
+    print("Chatbot: Health is wealth! Are you looking for information about nutrition, exercise, or something else related to health?")
+
+def print_sports_info():
+    print("Chatbot: Sports are exciting! Which sport are you interested in?")
+
+def print_movie_info():
+    print("Chatbot: Movies are always entertaining! What genre or specific movie are you interested in?")
+
+def print_food_info():
+    print("Chatbot: Food is delicious! Are you looking for recipes, restaurant recommendations, or something else related to food?")
+
+if __name__ == "__main__":
+    chatbot()
